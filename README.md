@@ -1,7 +1,7 @@
 yiiSearchVirtualAttribute
 =========================
 
-Search of values of virtual attributes of yii ActiveRecord (for example, in CGridView)
+Search (for example, ajax filters in CGridView widget) of values of virtual attributes of yii ActiveRecord
 
 
 This class under active development.

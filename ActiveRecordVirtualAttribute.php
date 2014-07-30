@@ -3,7 +3,8 @@
 /**
  * @author G.Azamat <m@fx4.ru>
  *
- * This class extends {@link CActiveRecord} and serve for search of values of "virtual attributes" (for example, in {@link CGridView})
+ * This class extends {@link CActiveRecord} and serve for search of values of "virtual attributes"
+ * (for example, in {@link CGridView})
  *
  * <b>INSTALLATION, TYPICAL USE CASE</b>
  *
@@ -31,8 +32,10 @@
  *              }
  *          </code>
  *      </li>
- *      <li> Add protected method "virtualSomeFunc" to class TestModel, which calculates value of virtual attribute (note, that name has prefix "virtual").<br/>
- *          <b>IMPORTANT:</b> method must use only attributes of TestModel (or constants). If method cannot calculate value, it must return null.
+ *      <li> Add protected method "virtualSomeFunc" to class TestModel, which calculates value of virtual attribute
+ *          (note, that name has prefix "virtual").<br/>
+ *          <b>IMPORTANT:</b> method must use only attributes of TestModel (or constants). If method cannot calculate
+ *          value, it must return null.
  *          <code>
  *              class TestModel extends ActiveRecordVirtualAttribute {
  *                  ...
@@ -58,7 +61,8 @@
  *      <b>SEARCH BY VIRTUAL ATTRIBUTE (CGridView):</b><br/>
  *      Now you can enable search for attribute "_someFunc" (note, that name has prefix "_").<br/>
  *      By default, enabled "readOnly" mode for this attribute, and any attempt writing value throws exception.<br/>
- *      But you can disable this mode through method TestModel::setVirtualReadOnly(false) for writing of values from CGridView-filter.<br/>
+ *      But you can disable this mode through method TestModel::setVirtualReadOnly(false) for writing of values from
+ *      CGridView-filter.<br/>
  *
  *      For example we will enable search in admin-action of TestModelController:
  *      <li>
@@ -151,7 +155,8 @@
  *
  *
  * ------------------------------------ RUS ------------------------------------
- * Данный класс наследует {@link CActiveRecord} и позволяет выполнять поиск/сортировку по виртуальным атрибутам (например, в {@link CGridView}).<br/>
+ * Данный класс наследует {@link CActiveRecord} и позволяет выполнять поиск/сортировку по виртуальным атрибутам
+ * (например, в {@link CGridView}).<br/>
  *
  * <b>ТЕРМИНЫ:</b>
  * <ol>
@@ -159,12 +164,15 @@
  *          <b>Виртуальный атрибут</b> &mdash; "атрибут" модели, значение которого может вычисляться "на лету"
  *          (например, на основе других атрибутов).
  *          Для виртуального атрибута не существует собственного "свойства" класса, поэтому при его чтении, вызывается
- *          специальный метод (или "геттер"), вычисляющий и возвращающий значение (подробнее о виртуальных атрибутах см. в {@link http://www.yiiframework.com/wiki/167}).
+ *          специальный метод (или "геттер"), вычисляющий и возвращающий значение
+ *          (подробнее о виртуальных атрибутах см. в {@link http://www.yiiframework.com/wiki/167}).
  *      </li>
  *      <li>
- *          <b>Виртуальный геттер</b> &mdash; специальный метод класса модели, который взаимнооднозначно связан с определенным
- *          виртуальным атрибутом, служит для вычисления значения этого атрибута, и вызывается при его чтении.<br/>
- *          Отличается от yii-шных геттеров тем, что название метода может начинаться с произвольного префикса, задаваемого {@link virtualGetterPrefix}.
+ *          <b>Виртуальный геттер</b> &mdash; специальный метод класса модели, который взаимнооднозначно связан
+ *          с определенным виртуальным атрибутом, служит для вычисления значения этого атрибута, и вызывается
+ *          при его чтении.<br/>
+ *          Отличается от yii-шных геттеров тем, что название метода может начинаться с произвольного префикса,
+ *          задаваемого {@link virtualGetterPrefix}.
  *      </li>
  *      <li>
  *          С виртуальным атрибутом однозначно связан <b>оригинальный атрибут</b> модели (который представлен в схеме БД).
@@ -177,16 +185,18 @@
  * Данный класс применим только для определенного круга задач, ограниченного следующими требованиями:
  * <ol>
  *      <li>
- *          Значение виртуального атрибута (возвращаемое геттером) должно <b>однозначно</b> вычисляться по атрибутам этой же модели.
- *          Т.е. не должно зависеть от внешних переменных, например, текущего времени, атрибута связанной модели, кол-ва записей в таблице и т.д.
+ *          Значение виртуального атрибута (возвращаемое геттером) должно <b>однозначно</b> вычисляться по атрибутам
+ *          этой же модели. Т.е. не должно зависеть от внешних переменных, например, текущего времени, атрибута
+ *          связанной модели, кол-ва записей в таблице и т.д.
  *      </li>
  *      <li>
- *          Виртуальный геттер <b>всегда</b> должен возвращать значение, даже если оно не может быть корректно рассчитано
- *          (если атрибуты, необходимые для вычисления, содержат некорректные значения, или просто не заданы).
+ *          Виртуальный геттер <b>всегда</b> должен возвращать значение, даже если оно не может быть корректно
+ *          рассчитано если атрибуты, необходимые для вычисления, содержат некорректные значения, или просто не заданы).
  *          В этом случае необходимо возвращать null.
  *      </li>
  *      <li>
- *          Обновление существующих и вставка новых записей в БД должны производиться <b>исключительно методами текущей модели</b>.
+ *          Обновление существующих и вставка новых записей в БД должны производиться
+ *          <b>исключительно методами текущей модели</b>.
  *      </li>
  * </ol>
  *
@@ -288,7 +298,8 @@ class ActiveRecordVirtualAttribute extends CActiveRecord // must be extended fro
     }
 
     /**
-     * This method is called when an attempt is made to assign a value to the virtual attribute in readOnly mode (see {@link getVirtualReadOnly}).<br/>
+     * This method is called when an attempt is made to assign a value to the virtual attribute in readOnly mode
+     * (see {@link getVirtualReadOnly}).<br/>
      * This is not critical case, because in readOnly mode you can't reading assigned value (always called getter).
      * But for the development of reliable applications, we don't recommend this (need throw exceptions).
      *
@@ -312,13 +323,15 @@ class ActiveRecordVirtualAttribute extends CActiveRecord // must be extended fro
 
     /**
      * @return bool Enabled "readOnly" mode for virtual attributes? <br/>
-     *           -- If <b>=TRUE</b>, any attempt to read the virtual attribute, its value is recalculated by getter.
-     *              In this mode, any assignment of values ​​is disallow (throw exception, see {@link onVirtualWriteReadOnlyAttribute}).<br/>
-     *           -- If <b>=FALSE</b>, virtual attribute behaves like ordinary attribute of CActiveRecord.
-     *              Except that you can't save it in the DB (see below). <br/>
-     *              In this case, allowed writing and reading any values, and reading of attribute doesn't call the getter.<br/><br/>
+     *   -- If <b>=TRUE</b>, any attempt to read the virtual attribute, its value is recalculated by getter.
+     *      In this mode, any assignment of values ​​is disallow
+     *      (throw exception, see {@link onVirtualWriteReadOnlyAttribute}).<br/>
+     *   -- If <b>=FALSE</b>, virtual attribute behaves like ordinary attribute of CActiveRecord.
+     *      Except that you can't save it in the DB (see below). <br/>
+     *      In this case, allowed writing and reading any values, and reading of attribute doesn't call the getter.<br/><br/>
      *
-     *           Whenever you <b>update the model (in DB)</b> values of all virtual attributes <b>recalculated independent</b> of this mode.
+     *      Whenever you <b>update the model (in DB)</b> values of all virtual attributes
+     *      <b>recalculated independent</b> of this mode.
      * @see setVirtualReadOnly
      * @see onVirtualWriteReadOnlyAttribute
      */
@@ -366,7 +379,8 @@ class ActiveRecordVirtualAttribute extends CActiveRecord // must be extended fro
      * Recalculate and refresh value of all virtual attributes.
      *
      * @param bool $keyAsOriginalAttrName This flag selects type of key for returned array.<br/>
-     *                                      If =FALSE, then keys is names of virtual attributes, else - names of original attributes (in DB schema)
+     *                                    If =FALSE, then keys is names of virtual attributes,
+     *                                    else - names of original attributes (in DB schema)
      * @return array Values calculated by virtual getters in format [attributeName] => calculatedValue
      */
     private function _virtualAttributesCalculateAndRefresh($keyAsOriginalAttrName = false)
@@ -420,8 +434,8 @@ class ActiveRecordVirtualAttribute extends CActiveRecord // must be extended fro
      * Converts name of original attribute (in DB schema) in name of virtual attribute (without prefix)
      *
      * @param $originalAttributeName
-     * @return null|string              Name of virtual attribute. Return null, if given name of original attribute does not contain
-     *                                  defined prefix {@link virtualAttributePrefix}
+     * @return null|string              Name of virtual attribute. Return null, if given name of original attribute
+     *                                  does not contain defined prefix {@link virtualAttributePrefix}
      */
     protected function virtualConvertAttributeNameOriginal2Virtual($originalAttributeName)
     {
