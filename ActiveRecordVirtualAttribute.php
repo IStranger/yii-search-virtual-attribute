@@ -10,8 +10,8 @@
  */
 
 /**
- * This class extends {@link CActiveRecord} and can be used for search of values of "<b>virtual attributes</b>"
- * (for example, in filter of widget {@link CGridView}).<br/>
+ * This class extends {@link CActiveRecord} and can be used search/sorting by "<b>virtual attributes</b>"
+ * (for example, in filter of {@link CGridView} widget).<br/>
  * Value of the virtual attribute is dynamically calculated by method (so-called "<b>virtual getter</b>")
  * when you read this attribute. <br/>
  * This class creates <b>search cache in DB</b> (adds column in table) and updates him after each updating of record.<br/>
