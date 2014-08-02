@@ -1,7 +1,7 @@
 yiiSearchVirtualAttribute
 =========================
 
-This class (for yii-framework) can be used for <b>search/sorting by virtual attributes</b>
+This class (for yii-framework) can be used for <b>search by virtual attributes</b>
 (for example, in ajax filter of <b>CGridView</b> widget).
 
 Value of the virtual attribute is dynamically calculated by method (so-called "virtual getter"), when you read this attribute.

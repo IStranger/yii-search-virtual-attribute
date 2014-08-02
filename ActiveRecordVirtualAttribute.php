@@ -10,7 +10,7 @@
  */
 
 /**
- * This class extends {@link CActiveRecord} and can be used search/sorting by "<b>virtual attributes</b>"
+ * This class extends {@link CActiveRecord} and can be used search by "<b>virtual attributes</b>"
  * (for example, in filter of {@link CGridView} widget).<br/>
  * Value of the virtual attribute is dynamically calculated by method (so-called "<b>virtual getter</b>")
  * when you read this attribute. <br/>
