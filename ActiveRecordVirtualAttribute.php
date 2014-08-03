@@ -590,7 +590,7 @@ class ActiveRecordVirtualAttribute extends CActiveRecord // must be extended fro
     private function _getSearchCacheAttributeAsArray()
     {
         $cacheAttributeName = $this->virtualSearchCacheField();
-        return array(
+        return !$this->hasAttribute($cacheAttributeName) ? array() : array(
             $cacheAttributeName => $this->{$cacheAttributeName}
         );
     }
