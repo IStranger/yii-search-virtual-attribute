@@ -556,16 +556,18 @@ class ActiveRecordVirtualAttribute extends CActiveRecord // must be extended fro
      */
     private function _recalculateAndRefreshAllAttributes()
     {
-        $searchCache = array();
         $virtualAttributes = $this->virtualAttributes();
-        foreach ($virtualAttributes as $attributeName) {
-            $value = $this->_recalculateAndRefreshAttribute($attributeName);
-            $searchCache[] = $attributeName . $this->_separatorValue . $value;
-        }
+        if (!empty($virtualAttributes)) {
+            $searchCache = array();
+            foreach ($virtualAttributes as $attributeName) {
+                $value = $this->_recalculateAndRefreshAttribute($attributeName);
+                $searchCache[] = $attributeName . $this->_separatorValue . $value;
+            }
 
-        // update "search cache" attribute
-        $cacheAttributeName = $this->virtualSearchCacheField();
-        $this->{$cacheAttributeName} = $this->_separatorColumn . join($this->_separatorColumn, $searchCache) . $this->_separatorColumn;
+            // update "search cache" attribute
+            $cacheAttributeName = $this->virtualSearchCacheField();
+            $this->{$cacheAttributeName} = $this->_separatorColumn . join($this->_separatorColumn, $searchCache) . $this->_separatorColumn;
+        }
     }
 
     /**
