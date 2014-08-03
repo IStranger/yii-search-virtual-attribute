@@ -280,7 +280,7 @@ class ActiveRecordVirtualAttribute extends CActiveRecord // must be extended fro
         if (is_array($attributes)) {
             $attributes = array_merge($attributes, $this->virtualSearchCacheField());
         }
-        return parent::insert($attributes); // надо ж добавить
+        return parent::insert($attributes);
     }
 
     // ---------------------------------------------------------------------------------------------------------
